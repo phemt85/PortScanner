@@ -51,7 +51,7 @@ public class PortScanner {
 
 			if(isPortOpen(ip_address, ports.get(port), timeout)){
 			
-				open_ports.add(port);
+				open_ports.add(ports.get(port));
 			}
 			
 			loader.update(port, ports.size());
