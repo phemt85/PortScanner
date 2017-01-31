@@ -19,3 +19,5 @@ Usage
 Examples
 
     java -jar PortScanner<version>.jar -i 127.0.0.1 -t 1000
+	
+	java -jar PortScanner<version>.jar -i 127.0.0.1 -t 1000 -p 22

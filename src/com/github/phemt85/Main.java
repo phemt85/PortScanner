@@ -8,9 +8,9 @@ public class Main {
 	public static void main(String []args) {
 		
 		Cli cli = new Cli();
-		CommandLinePrinter command_line_banner = new CommandLinePrinter();
+		CommandLinePrinter printer = new CommandLinePrinter();
 		
-		command_line_banner.printHead();
+		printer.printHead();
 		
 		try {
 			
@@ -31,13 +31,14 @@ public class Main {
 				System.exit(0);
 			}
 			
-			port_scanner.scanAll(command_line_values.getIp_address(), command_line_values.getTimeout());
+			printer.printStr("Scanning...", true);
+			
+			port_scanner.scan(command_line_values);
 			
 		} catch (ParseException e) {
 			
 			System.err.println(e.getMessage());
 		}
-		
-		command_line_banner.printTail();
+
 	}
 }

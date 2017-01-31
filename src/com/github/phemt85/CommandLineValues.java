@@ -1,11 +1,13 @@
 package com.github.phemt85;
 
+import java.util.List;
+
 public class CommandLineValues {
 
 	private boolean is_h_passed = false;
 	private String ip_address = null;
 	private int timeout = 0;
-	private boolean onlyopenport = false;
+	private List<Integer> ports = null;
 	
 	public boolean getIs_h_passed() {
 		return is_h_passed;
@@ -25,16 +27,11 @@ public class CommandLineValues {
 	public void setTimeout(int timeout) {
 		this.timeout = timeout;
 	}
-	public boolean isOnlyopenport() {
-		return onlyopenport;
+	public List<Integer> getPorts() {
+		return ports;
 	}
-	public void setOnlyopenport(boolean onlyopenport) {
-		this.onlyopenport = onlyopenport;
+	public void setPorts(List<Integer> ports) {
+		this.ports = ports;
 	}
-	@Override
-	public String toString() {
-		return "CommandLineValues [is_h_passed=" + is_h_passed + ", ip_address=" + ip_address + ", timeout=" + timeout
-				+ ", onlyopenport=" + onlyopenport + "]";
-	}
-	
+
 }
