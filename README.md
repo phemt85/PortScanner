@@ -23,4 +23,4 @@ Examples
 	
 	java -jar PortScanner<version>.jar -i 127.0.0.1 -t 1000 -p 22
 
-	java -jar PortScanner<version>.jar -i 127.0.0.1 -t 1000 -p 22 -ss 192.168.1.0/24
+	java -jar PortScanner<version>.jar -t 1000 -p 22 -ss 192.168.1.0/24
