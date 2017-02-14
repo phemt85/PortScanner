@@ -12,6 +12,8 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.net.util.SubnetUtils;
+import org.apache.commons.net.util.SubnetUtils.SubnetInfo;
 
 public class Cli {
 
@@ -45,11 +47,19 @@ public class Cli {
 				.desc("Scan only one port")
 				.build();
 		
+		Option scan_subnet_option = Option.builder("ss")
+				.longOpt("scansubnet")
+				.hasArg()
+				.argName("subnet")
+				.desc("Scan a subnet of ips provided with CIDR notation")
+				.build();
+		
 		options = new Options();
 		options.addOption(help_option);
 		options.addOption(ip_option);
 		options.addOption(timeout_option);
 		options.addOption(one_port_scan_option);
+		options.addOption(scan_subnet_option);
 	}
 
 	public void printOptions(){
@@ -84,6 +94,7 @@ public class Cli {
 			}
 			
 			command_line_values.setIp_address(cmdLine.getOptionValue("i"));
+		
 		}
 
 		if (cmdLine.hasOption("t")) {
@@ -124,6 +135,24 @@ public class Cli {
 				command_line_printer.printStr("Invalid port range!", true);
 				System.exit(1);
 			}
+		}
+		
+		if(cmdLine.hasOption("ss") && cmdLine.hasOption("p")){
+
+			try{
+
+				String subnet = cmdLine.getOptionValue("ss");
+				SubnetUtils utils = new SubnetUtils(subnet);
+				SubnetInfo info = utils.getInfo();
+				
+				command_line_values.setSubnet_ips_list(info.getAllAddresses());
+
+			}catch(Exception e){
+
+				command_line_printer.printStr("Invalid CIDR " + e.getMessage(), true);
+				System.exit(1);
+			}
+		
 		}
 
 		return command_line_values;
