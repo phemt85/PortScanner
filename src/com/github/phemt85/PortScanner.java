@@ -116,7 +116,7 @@ public class PortScanner {
 		command_line_printer.printStr("-Scan port 22 on 127.0.0.1", true);
 		command_line_printer.printStr("java -jar PortScanner<version>.jar -i 127.0.0.1 -t 1000 -p 22", true);
 		command_line_printer.printStr("-Scan port 22 on network 192.168.1.0/24", true);
-		command_line_printer.printStr("java -jar PortScanner<version>.jar -i 127.0.0.1 -t 1000 -p 22 -ss 192.168.1.0/24", true);
+		command_line_printer.printStr("java -jar PortScanner<version>.jar -t 1000 -p 22 -ss 192.168.1.0/24", true);
 
 	}
 	
